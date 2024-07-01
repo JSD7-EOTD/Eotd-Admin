@@ -25,7 +25,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch("http://localhost:4000/upload", {
+    await fetch("http://localhost:8000/upload", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,7 +40,7 @@ const AddProduct = () => {
     if (responseData.success) {
       product.image = responseData.image_url;
       console.log(product);
-      await fetch("http://localhost:4000/", {
+      await fetch("http://localhost:8000/", {
         method: "Post",
         headers: {
           Accept: "application/json",
@@ -56,10 +56,10 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 w-full max-w-[800px] p-8 px-12 m-5 mx-7 rounded-md bg-white box-border">
+    <div className="flex flex-col gap-5 w-full max-w-[1000px] p-8 px-12 m-5 mx-7 rounded-md bg-white box-border">
       {/* Product Title */}
       <div className="flex flex-col gap-5 w-full text-gray-500 text-base">
-        <p>Product title</p>
+        <p className="text-2xl text-black">Product title</p>
         <input
           value={productDetails.name}
           onChange={changeHandler}
