@@ -34,11 +34,15 @@ const AddProduct = () => {
     formData.append("product", image);
 
     try {
-      const uploadResponse = await axios.post("http://localhost:8000/upload", formData, {
-        headers: {
-          Accept: "application/json",
-        },
-      });
+      const uploadResponse = await axios.post(
+        "http://localhost:8000/upload",
+        formData,
+        {
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
 
       const responseData = uploadResponse.data;
 
@@ -46,14 +50,18 @@ const AddProduct = () => {
         product.image = responseData.Image_url; // Use the correct key from the response
         console.log(product);
 
-        const productResponse = await axios.post("http://localhost:8000/", product, {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        });
+        const productResponse = await axios.post(
+          "http://localhost:8000/",
+          product,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        );
       }
-      alert('add product')
+      alert("add product");
       setProductDetails({
         name: "",
         image: "",
@@ -61,9 +69,8 @@ const AddProduct = () => {
         new_price: "",
         description: "",
         old_price: "",
-      })
-      setImage(null)
-
+      });
+      setImage(null);
     } catch (error) {
       console.error("There was an error!", error);
       alert("An error occurred. Please check the console for details.");
