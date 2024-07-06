@@ -5,9 +5,9 @@ import Admin from "./page/admin/Admin";
 const App = () => {
   return (
     <div>
-      <NavbarAdmin/>
+      <NavbarAdmin />
       <div className="relative top-24">
-        <Admin/>
+        <Admin />
       </div>
     </div>
   );
