@@ -9,7 +9,7 @@ const ListProduct = () => {
 
   const fetchInfo = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/Products");
+      const response = await axios.get("https://structure-puey-puey.onrender.com/Products");
       setAllproducts(response.data);
     } catch (error) {
       console.error("Error fetching the products", error);
@@ -22,7 +22,7 @@ const ListProduct = () => {
 
   const remove_product = async (id) => {
     try {
-      await axios.post("http://localhost:8000/delete", { id });
+      await axios.post("https://structure-puey-puey.onrender.com/delete", { id });
       fetchInfo();
     } catch (error) {
       console.error("Error removing the product", error);
@@ -37,7 +37,7 @@ const ListProduct = () => {
     try {
       // ส่งคำขอ PATCH ไปยังเซิร์ฟเวอร์
       await axios.patch(
-        `http://localhost:8000/Products/${editProduct._id}`,
+        `https://structure-puey-puey.onrender.com/Products/${editProduct._id}`,
         editProduct
       );
       setEditProduct(null); // รีเซ็ตสถานะหลังจากการอัปเดตเสร็จ

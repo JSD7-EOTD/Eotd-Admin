@@ -35,7 +35,7 @@ const AddProduct = () => {
 
     try {
       const uploadResponse = await axios.post(
-        "http://localhost:8000/upload",
+        "https://structure-puey-puey.onrender.com/upload",
         formData,
         {
           headers: {
@@ -51,7 +51,7 @@ const AddProduct = () => {
         console.log(product);
 
         const productResponse = await axios.post(
-          "http://localhost:8000/",
+          "https://structure-puey-puey.onrender.com/",
           product,
           {
             headers: {
