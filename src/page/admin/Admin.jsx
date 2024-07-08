@@ -10,7 +10,7 @@ import Transaction from "../../components/Transaction/Transaction";
 const Admin = () => {
   return (
     <div className="flex">
-      <Sidebar />
+      <Sidebar/>
       <Routes>
         <Route path="/orderManagement" element={<OrderManagement />} />
         <Route path="/customers" element={<Customers />} />

@@ -6,7 +6,9 @@ const App = () => {
   return (
     <div>
       <NavbarAdmin />
-      <Admin />
+      <div className="relative top-24">
+        <Admin />
+      </div>
     </div>
   );
 };
