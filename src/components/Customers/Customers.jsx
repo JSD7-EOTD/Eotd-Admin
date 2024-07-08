@@ -3,7 +3,7 @@ import "boxicons";
 
 const Customers = () => {
   return (
-    <div className="w-[1140px] h-screen p-4 bg-zinc-100">
+    <div className="w-[1140px] h-screen p-4 bg-zinc-100 rounded-lg">
       <div className="flex flex-col gap-4">
         <div className="text-gray-500 text-center text-3xl ">
           <h1>Customers</h1>

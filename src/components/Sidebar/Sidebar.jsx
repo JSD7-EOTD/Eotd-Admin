@@ -4,7 +4,7 @@ import "boxicons";
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-col pt-7 gap-5 w-[300px] max-w-xs h-screen bg-white">
+    <div className="flex flex-col pt-7 gap-5 w-[300px] max-w-xs h-screen bg-white rounded-lg shadow">
       {/* OrderManagement */}
       <Link to={"/orderManagement"} style={{ textDecoration: "none" }}>
         <div className="flex items-center  justify-start m-0 mx-5 p-1.5 px- rounded-md bg-gray-200 gap-5 cursor-pointer  text-black">
