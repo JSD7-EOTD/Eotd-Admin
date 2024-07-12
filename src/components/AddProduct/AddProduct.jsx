@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import axios from "axios";
 import upload_area from "../../assets/upload_area.svg";
 
 const AddProduct = () => {
-  const [image, setImage] = useState(false);
+  const [image, setImage] = useState(null);
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
     category: "Toys",
     new_price: "",
+    description: "",
     old_price: "",
   });
+
   const imageHandler = (e) => {
     setImage(e.target.files[0]);
   };
@@ -17,41 +20,60 @@ const AddProduct = () => {
   const changeHandler = (e) => {
     setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
   };
+
   const Add_Product = async () => {
     console.log(productDetails);
-    let responseData;
-    let product = productDetails;
+    let product = { ...productDetails };
+
+    if (!image) {
+      alert("Please upload an image.");
+      return;
+    }
 
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch("http://localhost:8000/upload", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        responseData = data;
-      });
+    try {
+      const uploadResponse = await axios.post(
+        "http://localhost:8000/upload",
+        formData,
+        {
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
 
-    if (responseData.success) {
-      product.image = responseData.image_url;
-      console.log(product);
-      await fetch("http://localhost:8000/", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success ? alert("Product Added") : alert("Failed");
-        });
+      const responseData = uploadResponse.data;
+
+      if (responseData.success) {
+        product.image = responseData.Image_url; // Use the correct key from the response
+        console.log(product);
+
+        const productResponse = await axios.post(
+          "http://localhost:8000/",
+          product,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+      }
+      alert("add product");
+      setProductDetails({
+        name: "",
+        image: "",
+        category: "Toys",
+        new_price: "",
+        description: "",
+        old_price: "",
+      });
+      setImage(null);
+    } catch (error) {
+      console.error("There was an error!", error);
+      alert("An error occurred. Please check the console for details.");
     }
   };
 
@@ -79,6 +101,17 @@ const AddProduct = () => {
             onChange={changeHandler}
             type="text"
             name="old_price"
+            placeholder="Type here"
+            className="bg-white box-border w-full h-[59px] rounded-[4px] pl-4 border border-[#c3c3c3] outline-none text-[#7b7b7b] text-[14px]"
+          />
+        </div>
+        <div className="flex flex-col gap-5 w-full text-gray-500 text-base">
+          <p>Description</p>
+          <input
+            value={productDetails.description}
+            onChange={changeHandler}
+            type="text"
+            name="description"
             placeholder="Type here"
             className="bg-white box-border w-full h-[59px] rounded-[4px] pl-4 border border-[#c3c3c3] outline-none text-[#7b7b7b] text-[14px]"
           />
