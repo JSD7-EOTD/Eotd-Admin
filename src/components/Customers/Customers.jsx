@@ -17,7 +17,7 @@ const Customers = () => {
         <div>
           <table className="rounded-lg m-auto bg-white text-center">
             <thead>
-              <tr>
+              <tr className="bg-[#c68a55] text-white">
                 <th className="p-2 px-24">Name</th>
                 <th className="p-2 px-24">Phone Number</th>
                 <th className="p-2 px-24">Created</th>
@@ -183,13 +183,23 @@ const Customers = () => {
                 <td></td>
                 <td></td>
                 <td className="p-2">
-                <div class="flex gap-2">
-                  <button class="px-2 hover:text-gray-500">1</button>
-                  <button class="px-2 hover:text-gray-500">2</button>
-                  <button class="px-2 hover:text-gray-500">3</button>
-                  <button class="px-2 hover:text-gray-500">4</button>
-                  <button class="px-2 hover:text-gray-500">5</button>
-</div>
+                  <div class="flex gap-2  ">
+                    <button class="px-2 hover:text-gray-500 bg-[#d4a373] hover:bg-[#c68a55]">
+                      1
+                    </button>
+                    <button class="px-2 hover:text-gray-500 bg-[#d4a373] hover:bg-[#c68a55]">
+                      2
+                    </button>
+                    <button class="px-2 hover:text-gray-500 bg-[#d4a373] hover:bg-[#c68a55]">
+                      3
+                    </button>
+                    <button class="px-2 hover:text-gray-500 bg-[#d4a373] hover:bg-[#c68a55]">
+                      4
+                    </button>
+                    <button class="px-2 hover:text-gray-500 bg-[#d4a373] hover:bg-[#c68a55]">
+                      5
+                    </button>
+                  </div>
                 </td>
               </tr>
             </tfoot>
